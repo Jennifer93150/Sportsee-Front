@@ -1,16 +1,15 @@
-/** styles */
-import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
-
 /** assets */
 import pictoBodybuilding from "../assets/picto-bodybuilding.png";
 import pictoCycling from "../assets/picto-cycling.png";
 import pictoMeditation from "../assets/picto-meditation.png";
 import pictoSwimming from "../assets/picto-swimming.png";
 
+/** styles */
+import styled from "styled-components";
+import { color } from "../utils/styleVariables";
 
 const AsideBarContainer = styled.div`
-  background: ${color.neutral900};
+  background: ${color.darkblack};
   color: white;
   display: grid;
   grid-template-rows: 3fr 2fr;

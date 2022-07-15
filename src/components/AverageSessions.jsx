@@ -16,7 +16,34 @@ import { FacadePattern } from "../hooks/FacadePattern";
 
 /** Styles */
 import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
+import { color } from "../utils/styleVariables";
+
+const AverageSessionsWrapper = styled.div`
+background: ${color.red};
+position: relative;
+`;
+
+const AverageSessionsTitle = styled.h2`
+color: rgba(255, 255, 255, 0.6);
+position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+font-size: 1rem;
+font-weight: 500;
+margin: 0;
+
+@media (max-width: 1340px) {
+  top: 1rem;
+  left: 1.5rem;
+}
+`;
+
+const TooltipContainer = styled.p`
+background: white;
+font-size: 0.7rem;
+font-weight: 500;
+padding: 0.5rem;
+`;
 
 
 export function AverageSessions({ userId }) {
@@ -24,11 +51,11 @@ export function AverageSessions({ userId }) {
     
     return (
         <AverageSessionsWrapper>
-            <AverageSessionsChartTitle>
+            <AverageSessionsTitle>
                 Durée moyenne des
                 <br />
                 sessions
-            </AverageSessionsChartTitle>
+            </AverageSessionsTitle>
 
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart
@@ -81,53 +108,22 @@ export function AverageSessions({ userId }) {
 
 AverageSessions.propTypes = {
     userId: PropTypes.number.isRequired,
-  };
+};
   
-  function CustomTooltip({ active, payload }) {
-    if (active && payload) {
-      return <TooltipContainer>{`${payload[0].value} min`}</TooltipContainer>;
-    }
-  
-    return null;
+function CustomTooltip({ active, payload }) {
+  if (active && payload) {
+    return <TooltipContainer>{`${payload[0].value} min`}</TooltipContainer>;
   }
   
-  CustomTooltip.propTypes = {
-    active: PropTypes.bool,
-    payload: PropTypes.array,
-  };
+    return null;
+}
   
-  const AverageSessionsWrapper = styled.div`
-    position: relative;
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.array,
+};
   
-    background: ${color.primary500};
-  `;
-  
-  const AverageSessionsChartTitle = styled.h2`
-    position: absolute;
-    top: 1.5rem;
-    left: 2rem;
-  
-    margin: 0;
-  
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1rem;
-    font-weight: 500;
-  
-    @media (max-width: 1340px) {
-      top: 1rem;
-      left: 1.5rem;
-    }
-  `;
-  
-  const TooltipContainer = styled.p`
-    padding: 0.5rem;
-  
-    font-size: 0.7rem;
-    font-weight: 500;
-  
-    background: white;
-  `;
-  
+
 
 
 

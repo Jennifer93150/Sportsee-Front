@@ -9,6 +9,7 @@ import {
 export class MockedData {
 
    /**
+   * Retrieving the user's first name
    * @param {number} userId
    * @returns {string}
    */
@@ -23,6 +24,7 @@ export class MockedData {
   }
   
   /**
+   * Creation of an object with the name of the activities in French for the performance graph
    * @param {number} userId
    * @returns {array.Object}
    */
@@ -53,6 +55,7 @@ export class MockedData {
   }
 
   /**
+   * Creation of a table with initials of the days of the week
    * @param {number}} userId
    * @returns {array.Object}
    */
@@ -101,6 +104,7 @@ export class MockedData {
   }
 
   /**
+   * creation of a table with day, kg and calorie data for the daily activity graph
    * @param {number}} userId
    * @returns {array.Object}
    */
@@ -133,11 +137,10 @@ export class MockedData {
         return user.keyData;
       }
     }
-
-    return this.defaultKeyData;
   }
 
   /**
+   * retrieval of the score for the score graph
    * @param {number} userId
    * @returns {number}
    */

@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Redirect,
 } from "react-router-dom";
 import { createRoot } from 'react-dom/client';
 
@@ -14,6 +15,9 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <Routes>
+    
+      {/* <Route exact path="/" index element={<Redirect to="/dashboard/12"/>}/>
+       */}
       <Route exact path="/dashboard/:id" index element={<Dashboard />}/>
       
     </Routes>

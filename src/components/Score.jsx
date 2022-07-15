@@ -8,20 +8,52 @@ import {
   ResponsiveContainer 
 } from "recharts";
 
-/** Styles */
-import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
-
 /** Datas */
 import { FacadePattern } from "../hooks/FacadePattern";
 
+/** Styles */
+import styled from "styled-components";
+import { color } from "../utils/styleVariables";
+
+const ScoreContainer = styled.div`
+  background: ${color.white};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+const ScoreTitle = styled.h2`
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  @media (max-width: 1340px) {
+    top: 1rem;
+    left: 1rem;
+  }
+`;
+
+const ScoreLabel = styled.p`
+  font-size: 1rem;
+  position: absolute;
+  text-align: center;
+`;
+
+const ScoreValue = styled.span`
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+`;
 
 export function Score({ userId }) {
 
   const score = FacadePattern( "score", userId);
   
-  const pieData = [
-    { name: "completed", value: score, fillColor: `${color.primary500}` },
+  const data = [
+    { name: "completed", value: score, fillColor: `${color.red}` },
     { name: "not-completed", value: 1 - score, fillColor: "transparent" },
   ];
 
@@ -32,14 +64,14 @@ export function Score({ userId }) {
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={160} height={160}>
           <Pie
-            data={pieData}
+            data={data}
             dataKey="value"
             innerRadius={70}
             outerRadius={80}
             startAngle={90}
             endAngle={450}
           >
-            {pieData.map((entry, index) => (
+            {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={entry.fillColor}
@@ -65,40 +97,3 @@ Score.propTypes = {
   userId: PropTypes.number.isRequired,
 };
 
-const ScoreContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: ${color.neutral100};
-`;
-
-const ScoreTitle = styled.h2`
-  position: absolute;
-  top: 1.5rem;
-  left: 2rem;
-
-  margin: 0;
-
-  font-size: 1rem;
-  font-weight: 500;
-
-  @media (max-width: 1340px) {
-    top: 1rem;
-    left: 1rem;
-  }
-`;
-
-const ScoreLabel = styled.p`
-  position: absolute;
-
-  font-size: 1rem;
-  text-align: center;
-`;
-
-const ScoreValue = styled.span`
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-`;

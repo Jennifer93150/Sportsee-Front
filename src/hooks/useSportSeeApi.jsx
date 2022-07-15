@@ -24,6 +24,9 @@ export function useSportSeeApi(service, userId) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  /**
+   * List of endpoints
+   */
   const endpoints ={
     "first-name" :`user/${userId}`,
     "user" : `user/${userId}`, 
@@ -46,6 +49,9 @@ export function useSportSeeApi(service, userId) {
 
     setIsLoading(true);
 
+    /**
+     * API data recovery
+     */
     fetch(`${BASE_URL}/${endpoint}`)
         .then(res =>res.json())
         .then((data) => {
@@ -104,22 +110,18 @@ function getDataByService(data, service) {
 }
 
 /**
- * @returns {array.Object} default data for Performance.jsx
+ * Retrieving the user's first name
+ * @param {string} userData
+ * @returns {string} user first name
  */
-// export function defaultActivities() {
-//   const activities = [];
-
-//   for (let kind in ACTIVITY_BY_KIND) {
-//     activities.push({
-//       activity: ACTIVITY_BY_KIND[kind],
-//       value: 0,
-//     });
-//   }
-
-//   return activities;
-// }
+ function getFirstName(userData) {
+  return userData === "Impossible d'obtenir l'utilisateur"
+    ? "Utilisateur inconnu"
+    : userData;
+}
 
 /**
+ * creation of a table with kind and her value for the performance graph
  * @param {array.Object} userData
  * @returns {array.Object} data for Performance.jsx
  */
@@ -140,6 +142,7 @@ function getActivities(userData) {
 }
 
 /**
+ * Creation of a table with initials of the days of the week
  * @returns {array.Object} default data for AverageSessions.jsx
  */
 export function defaultAverageSessions() {
@@ -178,6 +181,7 @@ export function defaultAverageSessions() {
 }
 
 /**
+ * Creation of a table with initials of the days of the week for average session graph
  * @param {array.Object} userData
  * @returns {array.Object} data for AverageSessions.jsx
  */
@@ -186,7 +190,8 @@ function getAverageSessions(userData) {
   let averageSessions = defaultAverageSessions();
   
   for (let index in userData) {
-    /** replace each default (0) sessionLength with sessionLength from api data 
+    /** 
+     * Replace each default (0) sessionLength with sessionLength from api data 
      * as well as the number of days by the initials of the days
      */
     averageSessions[index].sessionLength = userData[index].sessionLength;
@@ -195,32 +200,8 @@ function getAverageSessions(userData) {
   return averageSessions;
 }
 
-/** A REVOIR 
- * Build an array with the dates of the 7 previous days.
- * @returns {array.Object} default data for DailyActivities
- */
-// export function defaultDailyActivities() {
-//   const dailyActivity = [];
-
-//   let currentDate = new Date(Date.now());
-
-//   // eslint-disable-next-line no-unused-vars
-//   for (let _ of "1234567") {
-   
-//     //let date = currentDate.toLocaleDateString("fr");
-
-//     dailyActivity.push({
-//       day: currentDate.getDate(),
-//       kilogram: 0,
-//       calories: 0,
-//     });
-    
-//   }
-// console.log(dailyActivity)
-//   return dailyActivity;
-// }
-
 /**
+ * creation of a table with day, kg and calorie data For the daily activity graph
  * @param {array.Object} userData
  * @returns {array.Object} dailyActivity
  */
@@ -248,32 +229,20 @@ function getDailyActivities(userData) {
 }
 
 /**
- * @param {string} userData
- * @returns {string} user first name
+ * data recovery for calorie cards
+ * @param {array.Objet} userData 
+ * @returns {array.Objet}
  */
-function getFirstName(userData) {
-  return userData === "Impossible d'obtenir l'utilisateur"
-    ? "Utilisateur inconnu"
-    : userData;
-}
-
-
-// export function defaultKeyData() {
-//   return {
-//     calorieCount: 0,
-//     proteinCount: 0,
-//     carbohydrateCount: 0,
-//     lipidCount: 0,
-//   };
-// }
-
-
 function getKeyData(userData) {
-  return userData === "Impossible d'obtenir l'utilisateur" ? "Impossible d'obtenir l'utilisateur" : userData.data.keyData;
-  //return userData === "Impossible d'obtenir l'utilisateur" ? defaultKeyData() : userData.data.keyData;
+  return userData === "" ? "Impossible d'obtenir l'utilisateur" : userData.data.keyData;
+  
 }
 
-
+/**
+ * retrieval of the score for the score graph
+ * @param {number} userData 
+ * @returns number
+ */
 function getScore(userData) {
-  return userData === "Impossible d'obtenir l'utilisateur" ? 0 : userData.data.todayScore || userData.data.score;
+  return userData === "" ? 0 : userData.data.todayScore || userData.data.score;
 }

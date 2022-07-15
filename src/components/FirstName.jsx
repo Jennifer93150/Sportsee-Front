@@ -6,13 +6,13 @@ import { FacadePattern } from "../hooks/FacadePattern";
 
 /** styles */
 import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
+import { color } from "../utils/styleVariables";
 
 
 const MainTitle = styled.h1`
-  margin: 0;
   font-size: 3rem;
   font-weight: 500;
+  margin: 0;
 
   @media (max-width: 1340px) {
     font-size: 2.5rem;
@@ -20,18 +20,17 @@ const MainTitle = styled.h1`
 `;
 
 const FirstNameUser = styled.span`
-  color: ${color.primary500};
+  color: ${color.red};
 `;
 
 const Message = styled.p`
-  margin: 2rem 0 4rem 0;
-
   font-size: 1.1rem;
-
+  margin: 2rem 0 4rem 0;
+  
   @media (max-width: 1340px) {
+    font-size: 1.05rem;
     margin: 0.5rem 0 2rem 0;
 
-    font-size: 1.05rem;
   }
 `;
 

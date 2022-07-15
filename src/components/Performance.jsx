@@ -1,9 +1,5 @@
 import PropTypes from "prop-types";
 
-/** Styles */
-import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
-
 /** Recharts */
 import {
   PolarAngleAxis,
@@ -16,8 +12,15 @@ import {
 /** Datas */
 import { FacadePattern } from "../hooks/FacadePattern";
 
+/** Styles */
+import styled from "styled-components";
+import { color } from "../utils/styleVariables";
 
-const ACTIVITIES_ORDER_IN_CHART = [
+const PerformancesWrapper = styled.div`
+  background: ${color.black};
+`;
+
+const ACTIVITIES_ORDER = [
   "Intensité",
   "Vitesse",
   "Force",
@@ -32,7 +35,7 @@ export function Performance({ userId }) {
 
   const orderedActivities = [];
 
-  for (let activity of ACTIVITIES_ORDER_IN_CHART) {
+  for (let activity of ACTIVITIES_ORDER) {
     for (let item of performances) {
       if (item.activity === activity) {
         orderedActivities.push({
@@ -63,7 +66,7 @@ export function Performance({ userId }) {
           />
           <Radar
             dataKey="value"
-            fill={`${color.primary500}`}
+            fill={`${color.red}`}
             fillOpacity={0.7}
             stroke="transparent"
           />
@@ -77,6 +80,3 @@ Performance.propTypes = {
   userId: PropTypes.number.isRequired,
 };
 
-const PerformancesWrapper = styled.div`
-  background: ${color.neutral800};
-`;

@@ -17,8 +17,67 @@ import { FacadePattern } from "../hooks/FacadePattern";
 
 /** styles */
 import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
+import { color } from "../utils/styleVariables";
 
+
+const DailyActivityWrapper = styled.div`
+  background: ${color.white};
+  height: 100%;
+  position: relative;
+`;
+
+const Title = styled.h2`
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+
+  @media (max-width: 1340px) {
+    top: 1rem;
+    left: 1.5rem;
+  }
+`;
+
+const LegendWrapper = styled.div`
+  color: ${color.darkgrey};
+  display: flex;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  @media (max-width: 1340px) {
+    top: 1rem;
+    right: 1.5rem;
+  }
+`;
+
+const LegendDetail = styled.p`
+  margin: 0 0 0 2rem;
+`;
+
+const Color = styled.span`
+background: ${(props) => props.background};
+border-radius: 50%;
+display: inline-block;
+height: 0.5rem;
+margin: 0 0.5rem 0 0;
+width: 0.5rem;
+`;
+
+const TooltipContainer = styled.div`
+border: 2px solid rgba(255, 255, 255, 0.3);
+`;
+
+const TooltipLine = styled.p`
+background: ${(props) => props.background};
+color: white;
+font-size: 0.7rem;
+font-weight: 500;
+padding: 0.75rem;
+margin: 0;
+
+`;
 
 export function DailyActivities({ userId }) {
 
@@ -29,11 +88,11 @@ export function DailyActivities({ userId }) {
           <Title>Activité quotidienne</Title>
           <LegendWrapper>
             <LegendDetail>
-              <Color background={`${color.neutral800}`}></Color>
+              <Color background={`${color.black}`}></Color>
               Poids (kg)
             </LegendDetail>
             <LegendDetail>
-              <Color background={`${color.primary500}`}></Color>
+              <Color background={`${color.red}`}></Color>
               Calories brûlées (kCal)
             </LegendDetail>
           </LegendWrapper>
@@ -48,13 +107,13 @@ export function DailyActivities({ userId }) {
               <CartesianGrid
                 strokeDasharray="3 3"
                 vertical={false}
-                stroke={`${color.neutral200}`}
+                stroke={`${color.grey}`}
               />
               <XAxis
                 dataKey="day"
                 dy={16}
                 padding={{ left: -48, right: -48 }}
-                stroke={`${color.neutral400}`}
+                stroke={`${color.darkgreylight}`}
                 tickLine={false}
                 tick={{ fontSize: 14, fontWeight: 500 }}
               />
@@ -65,7 +124,7 @@ export function DailyActivities({ userId }) {
                 allowDecimals={false}
                 dx={50}
                 orientation="right"
-                stroke={`${color.neutral400}`}
+                stroke={`${color.darkgreylight}`}
                 axisLine={false}
                 tickLine={false}
               />
@@ -79,14 +138,14 @@ export function DailyActivities({ userId }) {
                 yAxisId="kg"
                 dataKey="kilogram"
                 maxBarSize={7}
-                fill={`${color.neutral800}`}
+                fill={`${color.black}`}
                 radius={[50, 50, 0, 0]}
               />
               <Bar
                 yAxisId="cal"
                 dataKey="calories"
                 maxBarSize={7}
-                fill={`${color.primary500}`}
+                fill={`${color.red}`}
                 radius={[50, 50, 0, 0]}
               />
               <Tooltip
@@ -107,10 +166,10 @@ function CustomTooltip({ active, payload }) {
     if (active && payload) {
       return (
         <TooltipContainer>
-          <TooltipLine background={`${color.neutral800}`}>
+          <TooltipLine background={`${color.black}`}>
             {`${payload[0].value} kg`}
           </TooltipLine>
-          <TooltipLine background={`${color.primary500}`}>
+          <TooltipLine background={`${color.red}`}>
             {`${payload[1].value} kCal`}
           </TooltipLine>
         </TooltipContainer>
@@ -125,71 +184,3 @@ function CustomTooltip({ active, payload }) {
     payload: PropTypes.array,
   };
 
-
-  const DailyActivityWrapper = styled.div`
-  position: relative;
-
-  height: 100%;
-
-  background: ${color.neutral100};
-`;
-
-const Title = styled.h2`
-  position: absolute;
-  top: 1.5rem;
-  left: 2rem;
-
-  margin: 0;
-
-  font-size: 1rem;
-  font-weight: 500;
-
-  @media (max-width: 1340px) {
-    top: 1rem;
-    left: 1.5rem;
-  }
-`;
-
-const LegendWrapper = styled.div`
-  display: flex;
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-
-  color: ${color.neutral500};
-
-  @media (max-width: 1340px) {
-    top: 1rem;
-    right: 1.5rem;
-  }
-`;
-
-const LegendDetail = styled.p`
-  margin: 0 0 0 2rem;
-`;
-
-const Color = styled.span`
-display: inline-block;
-
-width: 0.5rem;
-height: 0.5rem;
-margin: 0 0.5rem 0 0;
-border-radius: 50%;
-
-background: ${(props) => props.background};
-`;
-
-const TooltipContainer = styled.div`
-border: 2px solid rgba(255, 255, 255, 0.3);
-`;
-
-const TooltipLine = styled.p`
-padding: 0.75rem;
-margin: 0;
-
-color: white;
-font-size: 0.7rem;
-font-weight: 500;
-
-background: ${(props) => props.background};
-`;

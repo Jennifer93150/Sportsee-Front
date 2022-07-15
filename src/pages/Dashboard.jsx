@@ -16,7 +16,7 @@ import { Score } from "../components/Score";
 /** styles */
 import "../styles/dashboard.css";
 import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
+import { color } from "../utils/styleVariables";
 
 const DashboardContainer = styled.main`
   display: grid;

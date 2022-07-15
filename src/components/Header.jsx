@@ -3,10 +3,10 @@ import logo from "../assets/logo.svg";
 
 /** styles */
 import styled from "styled-components";
-import { color } from "../utils/style/styleVariables";
+import { color } from "../utils/styleVariables";
 
 const HeaderContainer = styled.header`
-  background: ${color.neutral900};
+  background: ${color.darkblack};
   color: white;
   display: grid;
   grid-template-columns: 16rem 1fr;
