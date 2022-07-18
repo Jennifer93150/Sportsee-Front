@@ -10,7 +10,7 @@ import {
 } from "recharts";
 
 /** Datas */
-import { FacadePattern } from "../hooks/FacadePattern";
+import { FacadePattern } from "../services/FacadePattern";
 
 /** Styles */
 import styled from "styled-components";
@@ -30,7 +30,7 @@ const ACTIVITIES_ORDER = [
 ];
 
 export function Performance({ userId }) {
-
+  
   const performances = FacadePattern( "performance", userId);
 
   const orderedActivities = [];

@@ -7,7 +7,7 @@ import carbohydrateIcon from "../assets/icon-carbohydrate.png";
 import lipidIcon from "../assets/icon-lipid.png";
 
 /** Datas */
-import { FacadePattern } from "../hooks/FacadePattern";
+import { FacadePattern } from "../services/FacadePattern";
 
 
 /** Styles */
@@ -56,7 +56,6 @@ export function CaloriesCard({ userId }) {
   const calorieInfos = FacadePattern( "user", userId);
 
   return (
-    
     <div>
       <WrapperCard>
         <img src={calorieIcon} alt="Logo calorie" width="60" height="60" />

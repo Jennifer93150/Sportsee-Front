@@ -13,7 +13,7 @@ import {
 } from 'recharts';
 
 /** datas */
-import { FacadePattern } from "../hooks/FacadePattern";
+import { FacadePattern } from "../services/FacadePattern";
 
 /** styles */
 import styled from "styled-components";
@@ -80,7 +80,7 @@ margin: 0;
 `;
 
 export function DailyActivities({ userId }) {
-
+  
   const dailyActivities = FacadePattern( "daily-activity", userId);
   
     return (

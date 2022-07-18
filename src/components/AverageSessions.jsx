@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 
 /** Datas */
-import { FacadePattern } from "../hooks/FacadePattern";
+import { FacadePattern } from "../services/FacadePattern";
 
 /** Styles */
 import styled from "styled-components";
@@ -47,6 +47,7 @@ padding: 0.5rem;
 
 
 export function AverageSessions({ userId }) {
+  
   const averageSession = FacadePattern( "average-sessions", userId);
     
     return (

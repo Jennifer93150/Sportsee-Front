@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from 'react';
 
 /** datas */
-import { FacadePattern } from "../hooks/FacadePattern";
+import { FacadePattern } from "../services/FacadePattern";
 
 /** styles */
 import styled from "styled-components";
@@ -40,17 +40,18 @@ export function FirstName({ userId }) {
     const firstNameById = FacadePattern("first-name", userId);
 
     return (
+
         <div>
             <MainTitle>
                 Bonjour <FirstNameUser>{firstNameById}</FirstNameUser>
             </MainTitle>
             <Message>
-                {firstNameById === "Utilisateur inconnu" ? (
-                ""
+                {firstNameById === "" ? (
+                "Nous n'arrivons pas à vous identifier"
                 ) : (
                 <span>
-                    Félicitations ! Vous avez explosé vos objectifs hier
-                    !&nbsp;👏
+                  Félicitations ! Vous avez explosé vos objectifs hier
+                  !&nbsp;👏
                 </span>
                 )}
             </Message>

@@ -9,14 +9,17 @@ import { CaloriesCard } from "../components/CaloriesCard";
 import { AverageSessions } from "../components/AverageSessions";
 import {Performance} from "../components/Performance";
 import { Score } from "../components/Score";
+import { Error } from "../pages/Error";
 
-/** datas */
+import { dataMocked } from "../services/DataMocked";
 
+/** Datas */
+import { FacadePattern } from "../services/FacadePattern";
+import { useSportSeeApi } from "../services/useSportSeeApi";
 
 /** styles */
 import "../styles/dashboard.css";
 import styled from "styled-components";
-import { color } from "../utils/styleVariables";
 
 const DashboardContainer = styled.main`
   display: grid;
@@ -35,7 +38,7 @@ const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-
+  
   @media (max-width: 1340px) {
     gap: 1rem;
   }
@@ -66,33 +69,20 @@ const MainChart = styled.div`
 export function Dashboard() {
   let { id } = useParams();
   let userId = parseInt(id);
-//   const { data, isLoading, error } = new MockedAPI(
-//     `user/${userId}`,
-//     "firstName"
-//   );
 
-
-//   if (error) {
-//     return (
-//       <div>
-//         <Header />
-
-//         <DashboardContainer>
-//           <AsideBar />
-//           <MainContent></MainContent>
-//         </DashboardContainer>
-//       </div>
-//     );
-//   }
+  const { error } = useSportSeeApi("firstName",userId);
+  
+  if ( error ) {
+    return <Error/>;
+  }
 
   return (
     <div>
-      <Header />
-
       <DashboardContainer>
         <AsideBar />
         <MainContent>
           <FirstName userId={userId}/>
+          
           <ContentGrid>
             <ChartsGrid>
               <MainChart>

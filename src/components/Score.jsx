@@ -9,7 +9,7 @@ import {
 } from "recharts";
 
 /** Datas */
-import { FacadePattern } from "../hooks/FacadePattern";
+import { FacadePattern } from "../services/FacadePattern";
 
 /** Styles */
 import styled from "styled-components";
@@ -49,7 +49,7 @@ const ScoreValue = styled.span`
 `;
 
 export function Score({ userId }) {
-
+  
   const score = FacadePattern( "score", userId);
   
   const data = [

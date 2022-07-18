@@ -1,9 +1,11 @@
+import { useParams } from "react-router";
 /**assets */
 import logo from "../assets/logo.svg";
 
 /** styles */
 import styled from "styled-components";
 import { color } from "../utils/styleVariables";
+
 
 const HeaderContainer = styled.header`
   background: ${color.darkblack};
@@ -26,6 +28,8 @@ const LinksList = styled.ul`
   height: 100%;
   list-style-type:none;
   text-align: center;
+  align-items: center;
+  margin: 0;
 `;
 
 const HeaderLink = styled.a`
@@ -39,21 +43,31 @@ const HeaderLink = styled.a`
 `;
 
 export function Header() {
+  let { id } = useParams();
+  let userId = parseInt(id);
+
   return (
     <div>
       <HeaderContainer data-testid="header">
         <LogoLink href="/">
           <img src={logo} alt="SportSee" />
         </LogoLink>
-
+        {}
         <nav>
           <LinksList>
             <li>
               <HeaderLink href="/">Accueil</HeaderLink>
             </li>
-            <li>
-              <HeaderLink href="/">Profil</HeaderLink>
-            </li>
+            {userId === 12 ? (
+              <li>
+                <HeaderLink href="/dashboard/18">Profil</HeaderLink>
+              </li>
+              ) : (
+              <li>
+                <HeaderLink href="/dashboard/12">Profil</HeaderLink>
+              </li>
+            )}
+            
             <li>
               <HeaderLink href="/">Réglage</HeaderLink>
             </li>
