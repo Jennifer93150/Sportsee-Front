@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRoutes } from "react-router-dom";
 
 const BASE_URL = "http://localhost:3000";
 
@@ -14,13 +15,13 @@ const ACTIVITY_BY_KIND = {
 /**
  * Service that retrieves data from SportSeeAPI to feed the dashboard.
  * @param {string} service
- * @param {string} userId
+ * @param {number} userId
  * @returns {undefined|Object}
  */
 export function useSportSeeApi(service, userId) {
-  
+ 
   /** the "service" parameter allows access to the endpoint*/
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -37,49 +38,45 @@ export function useSportSeeApi(service, userId) {
   }
 
   let endpoint;
-  
-  useEffect(() => {
-    
-    for(let i in endpoints){
-        let value = endpoints[i];
-        if(i === service){
-          endpoint = value;
-        }
+  for(let i in endpoints){
+    let value = endpoints[i];
+    if(i === service){
+      endpoint = value;
     }
+  }
 
+  useEffect(() => {
     setIsLoading(true);
-
+  
     /**
      * API data recovery
      */
     fetch(`${BASE_URL}/${endpoint}`)
-        .then(res =>res.json())
-        .then((data) => {
+      .then(res =>res.json())
+      .then((data) => {
             const extractedData = getDataByService(data, service);
             setData(extractedData);
             setIsLoading(false);
-        })
-        .catch ((err) =>{
-          console.log(err);
+      })
+      .catch ((err) =>{
+          console.error(`An error occured while fetching ${endpoint} : ${err}`);
           setError(true);
-          setIsLoading(false);
-        })
+      })
    
   }, [service, userId, endpoint]);
-
-  return { data, isLoading, error };
+  
+  return {data, isLoading, error} ;
 }
 
 /**
  * Specialized functions to obtain the data of each service.
  * @param {string|Object} data
  * @param {string} service
- * @returns {undefined|string|number|Object|array.Object}
+ * @returns {string|number|Object|array.Object|undefined|}
  */
 function getDataByService(data, service) {
   if (data) {
     switch (service) {
-
       case "first-name":
         return getFirstName(data.data.userInfos.firstName);
 
@@ -96,7 +93,7 @@ function getDataByService(data, service) {
         return getScore(data);
 
       case "user":
-          return getKeyData(data);
+        return getKeyData(data.data.keyData);
 
       default:
         console.error(
@@ -116,6 +113,7 @@ function getDataByService(data, service) {
  * @returns {string} user first name
  */
  function getFirstName(userData) {
+  
   return userData === ""
     ? "Nous n'arrivons pas à vous identifier"
     : userData;
@@ -124,7 +122,7 @@ function getDataByService(data, service) {
 /**
  * creation of a table with kind and her value for the performance graph
  * @param {array.Object} userData
- * @returns {array.Object} data for Performance.jsx
+ * @returns {array.Object} data for performance.jsx
  */
 function getActivities(userData) {
   const activities = [];
@@ -135,7 +133,7 @@ function getActivities(userData) {
         value: item.value,
       });
     }
-
+    
     return activities;
   }
 
@@ -207,7 +205,7 @@ function getAverageSessions(userData) {
  * @returns {array.Object} dailyActivity
  */
 function getDailyActivities(userData) {
-  
+ 
   if (userData) {
     const dailyActivity = [];
 
@@ -223,10 +221,9 @@ function getDailyActivities(userData) {
         calories: item.calories,
       });
     }
+    
     return dailyActivity;
   }
-
-  // return defaultDailyActivities();
 }
 
 /**
@@ -235,7 +232,8 @@ function getDailyActivities(userData) {
  * @returns {array.Objet}
  */
 function getKeyData(userData) {
-  return userData === "" ? "Impossible d'obtenir l'utilisateur" : userData.data.keyData;
+  
+  return userData === "" ? "Impossible d'obtenir l'utilisateur" : userData;
   
 }
 
@@ -245,5 +243,6 @@ function getKeyData(userData) {
  * @returns number
  */
 function getScore(userData) {
+  
   return userData === "" ? 0 : userData.data.todayScore || userData.data.score;
 }

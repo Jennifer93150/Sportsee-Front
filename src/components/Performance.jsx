@@ -11,6 +11,8 @@ import {
 
 /** Datas */
 import { FacadePattern } from "../services/FacadePattern";
+import { useSportSeeApi } from "../services/useSportSeeApi";
+import { MockedData } from "../services/useMockedData";
 
 /** Styles */
 import styled from "styled-components";
@@ -31,8 +33,8 @@ const ACTIVITIES_ORDER = [
 
 export function Performance({ userId }) {
   
-  const performances = FacadePattern( "performance", userId);
-
+  const performances = FacadePattern("performance", userId);
+  
   const orderedActivities = [];
 
   for (let activity of ACTIVITIES_ORDER) {

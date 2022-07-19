@@ -13,12 +13,13 @@ import { FacadePattern } from "../services/FacadePattern";
 /** Styles */
 import styled from "styled-components";
 import { color } from "../utils/styleVariables";
+import { useSportSeeApi } from "../services/useSportSeeApi";
 
 const WrapperCard = styled.div`
   background: ${color.white}; 
   border-radius: 5px;
   display: flex;
-  margin: 0 0 20px 0;
+  margin: 0 0 35px 0;
   padding: 2rem;
   text-align: left;
   @media (max-width: 1340px) {
@@ -52,9 +53,9 @@ const NameMeasure = styled.div`
 `;
 
 export function CaloriesCard({ userId }) {
-
-  const calorieInfos = FacadePattern( "user", userId);
-
+  
+  const calorieInfos = FacadePattern('user', userId);
+ 
   return (
     <div>
       <WrapperCard>

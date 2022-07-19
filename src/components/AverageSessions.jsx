@@ -17,6 +17,7 @@ import { FacadePattern } from "../services/FacadePattern";
 /** Styles */
 import styled from "styled-components";
 import { color } from "../utils/styleVariables";
+import { useSportSeeApi } from "../services/useSportSeeApi";
 
 const AverageSessionsWrapper = styled.div`
 background: ${color.red};
@@ -49,7 +50,7 @@ padding: 0.5rem;
 export function AverageSessions({ userId }) {
   
   const averageSession = FacadePattern( "average-sessions", userId);
-    
+  
     return (
         <AverageSessionsWrapper>
             <AverageSessionsTitle>

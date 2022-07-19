@@ -9,7 +9,6 @@ import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 /** Pages */
-import { Home } from './pages/Home';
 import { Dashboard } from './pages/Dashboard';
 import { Error } from './pages/Error';
 
@@ -18,8 +17,7 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route exact path="/dashboard/:id" index element={<Home/>}/>
-      {/* <Route exact path="/dashboard/:id" index element={<Dashboard/>}/> */}
+      <Route exact path="/dashboard/:id" index element={<Dashboard/>}/>
       <Route exact path="*" element={<Error />}/>
     </Routes>
   </BrowserRouter>

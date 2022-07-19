@@ -1,3 +1,5 @@
+const useMockedData = false;
+
 const USER_MAIN_DATA = [
     {
         id: 12,
@@ -263,6 +265,7 @@ const USER_PERFORMANCE = [
 ]
 
 module.exports = {
+    useMockedData,
     USER_MAIN_DATA,
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,

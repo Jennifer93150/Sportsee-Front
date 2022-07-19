@@ -13,8 +13,7 @@ export class MockedData {
    * @param {number} userId
    * @returns {string}
    */
-  getFirstNameById(userId) {
-    
+  getFirstNameById(userId) {  
       for (let user of USER_MAIN_DATA) {
         if (user.id === userId) {
           return user.userInfos.firstName;
@@ -57,7 +56,7 @@ export class MockedData {
 
   /**
    * Creation of a table with initials of the days of the week
-   * @param {number}} userId
+   * @param {number} userId
    * @returns {array.Object}
    */
   getAverageSessionsById(userId) {

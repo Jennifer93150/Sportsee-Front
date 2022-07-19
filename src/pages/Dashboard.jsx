@@ -11,8 +11,8 @@ import {Performance} from "../components/Performance";
 import { Score } from "../components/Score";
 import { Error } from "../pages/Error";
 
-
 /** Datas */
+import { FacadePattern } from "../services/FacadePattern";
 import { useSportSeeApi } from "../services/useSportSeeApi";
 
 /** styles */
@@ -68,19 +68,19 @@ export function Dashboard() {
   let { id } = useParams();
   let userId = parseInt(id);
 
-  const { error } = useSportSeeApi("firstName",userId);
+  const { error, data } = useSportSeeApi(`first-name`, userId);
   
-  if ( error ) {
+  if (error || data === undefined) {
     return <Error/>;
   }
-
+  
   return (
     <div>
+      <Header />
       <DashboardContainer>
         <AsideBar />
         <MainContent>
-          <FirstName userId={userId}/>
-          
+          <FirstName firstNameById={data} userId={userId}/>
           <ContentGrid>
             <ChartsGrid>
               <MainChart>

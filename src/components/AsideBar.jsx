@@ -14,10 +14,8 @@ const AsideBarContainer = styled.div`
   display: grid;
   grid-template-rows: 3fr 2fr;
   max-width: 140px;
-  height: 1024px;
   @media (max-width: 1340px) {
-    max-height: 692px;
-   
+    max-height: 780px;
   }
 `;
 

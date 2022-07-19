@@ -7,6 +7,7 @@ import { FacadePattern } from "../services/FacadePattern";
 /** styles */
 import styled from "styled-components";
 import { color } from "../utils/styleVariables";
+import { useSportSeeApi } from "../services/useSportSeeApi";
 
 
 const MainTitle = styled.h1`
@@ -35,15 +36,12 @@ const Message = styled.p`
 `;
 
 
-export function FirstName({ userId }) {
-
-    const firstNameById = FacadePattern("first-name", userId);
+export function FirstName({ firstNameById, userId }) {
 
     return (
-
         <div>
             <MainTitle>
-                Bonjour <FirstNameUser>{firstNameById}</FirstNameUser>
+              Bonjour <FirstNameUser>{firstNameById}</FirstNameUser>
             </MainTitle>
             <Message>
                 {firstNameById === "" ? (

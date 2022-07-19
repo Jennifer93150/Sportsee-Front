@@ -14,6 +14,7 @@ import {
 
 /** datas */
 import { FacadePattern } from "../services/FacadePattern";
+import { useSportSeeApi } from "../services/useSportSeeApi";
 
 /** styles */
 import styled from "styled-components";
@@ -96,7 +97,6 @@ export function DailyActivities({ userId }) {
               Calories brûlées (kCal)
             </LegendDetail>
           </LegendWrapper>
-
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={dailyActivities}
