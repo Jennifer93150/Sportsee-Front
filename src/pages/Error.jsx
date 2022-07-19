@@ -33,6 +33,7 @@ export function Error() {
   
     return (
       <div>
+        <Header />
         <DashboardContainer>
           <AsideBar />
           <MainContent>

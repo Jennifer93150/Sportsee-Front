@@ -1,7 +1,5 @@
 import { MockedData } from "./useMockedData";
 import { useSportSeeApi } from "./useSportSeeApi";
-import { dataMocked } from "./DataMocked";
-import { Error } from "../pages/Error";
 
 /**
  * recovery of api data or mocked data if the back is not available

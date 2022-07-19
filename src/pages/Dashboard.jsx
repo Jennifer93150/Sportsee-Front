@@ -11,10 +11,8 @@ import {Performance} from "../components/Performance";
 import { Score } from "../components/Score";
 import { Error } from "../pages/Error";
 
-import { dataMocked } from "../services/DataMocked";
 
 /** Datas */
-import { FacadePattern } from "../services/FacadePattern";
 import { useSportSeeApi } from "../services/useSportSeeApi";
 
 /** styles */
