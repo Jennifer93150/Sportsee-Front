@@ -35,8 +35,12 @@ const Message = styled.p`
   }
 `;
 
-
-export function FirstName({ firstNameById, userId }) {
+/**
+ * User's first name
+ * @param {number} firstNameById
+ * @returns 
+ */
+export function FirstName({ firstNameById }) {
 
     return (
         <div>

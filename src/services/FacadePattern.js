@@ -1,7 +1,6 @@
 import { MockedData } from "./useMockedData";
 import { useSportSeeApi } from "./useSportSeeApi";
 import { useMockedData } from "../datas/data";
-import { Error } from "../pages/Error";
 
 /**
  * recovery of api data or mocked data if the back is not available
@@ -16,7 +15,7 @@ export function FacadePattern(service, userId) {
     /**
      * Use mocked data if api access unavailable 
      */
-    if( useMockedData || isLoading ) {
+    if( useMockedData || isLoading) {
         const mockedData = new MockedData();
         return mockedData.getDataMockedByService(service, userId);
     }

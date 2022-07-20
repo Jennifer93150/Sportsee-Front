@@ -43,6 +43,23 @@ Le front-end est alors consultable à l'URL `http://localhost:3001`.
 
 - l'API de SportSee ne fournit des données que pour les utilisateurs d'id 12 et 18.
 
+### Utilisation données mockées
+
+Cloner le présent repo du front-end de SportSee :
+
+`git clone https://github.com/Jennifer93150/Sportsee-Front`
+
+En se plaçant dans ce repo du front-end, installer ses dépendances :
+
+`npm install`
+
+Lancer le front-end sur le port 3001 :
+
+`npm start`
+
+Aller dans fichier datas/data.js et modifier la variable _useMockedData_ en true.
+
+
 ## Installation (_english version_)
 
 ### Prerequisites
@@ -84,7 +101,21 @@ Front-end is now rendered at URL `http://localhost:3001`.
 
 - _SportSee_ API only contains data for users with id 12 and 18.
 
+### Using mocked data
 
+Clone the current SportSee front-end repo:
+
+`git clone https://github.com/Jennifer93150/Sportsee-Front`
+
+By placing yourself in this front-end repo, install its dependencies:
+
+`npm install`
+
+Launch the front-end on port 3001:
+
+`npm start`
+
+Go to datas/data.js file and change the _useMockedData_ variable to true.
 
 
 

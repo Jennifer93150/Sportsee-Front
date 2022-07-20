@@ -44,6 +44,9 @@ const Disclaimer = styled.p`
   }
 `;
 
+/**
+ * Vertical navigation bar with icons
+ */
 export function AsideBar() {
   return (
     <AsideBarContainer>

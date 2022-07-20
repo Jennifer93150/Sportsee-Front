@@ -46,7 +46,10 @@ font-weight: 500;
 padding: 0.5rem;
 `;
 
-
+/**
+ * Average Session Duration Graph
+ * @param {number} userId 
+ */
 export function AverageSessions({ userId }) {
   
   const averageSession = FacadePattern( "average-sessions", userId);

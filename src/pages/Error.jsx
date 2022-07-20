@@ -28,7 +28,9 @@ const MessageError = styled.div`
   text-align: center;
   width: 60%;
 `
-
+/**
+ * Error page that is displayed when the API is unavailable
+ */
 export function Error() {
   
     return (

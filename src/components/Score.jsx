@@ -49,6 +49,10 @@ const ScoreValue = styled.span`
   text-align: center;
 `;
 
+/**
+ * Score chart
+ * @param {number} userId 
+ */
 export function Score({ userId }) {
   
   const score = FacadePattern( "score", userId);

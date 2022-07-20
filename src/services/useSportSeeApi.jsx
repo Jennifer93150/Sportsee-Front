@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useRoutes } from "react-router-dom";
 
 const BASE_URL = "http://localhost:3000";
 
@@ -72,7 +71,7 @@ export function useSportSeeApi(service, userId) {
  * Specialized functions to obtain the data of each service.
  * @param {string|Object} data
  * @param {string} service
- * @returns {string|number|Object|array.Object|undefined|}
+ * @returns {string|number|Object|array.Object|undefined}
  */
 function getDataByService(data, service) {
   if (data) {

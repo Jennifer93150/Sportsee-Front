@@ -42,6 +42,9 @@ const HeaderLink = styled.a`
   }
 `;
 
+/**
+ * Main navigation bar
+ */
 export function Header() {
   let { id } = useParams();
   let userId = parseInt(id);

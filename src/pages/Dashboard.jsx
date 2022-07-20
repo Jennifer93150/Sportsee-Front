@@ -14,7 +14,8 @@ import { Error } from "../pages/Error";
 /** Datas */
 import { FacadePattern } from "../services/FacadePattern";
 import { useSportSeeApi } from "../services/useSportSeeApi";
-
+import { MockedData } from "../services/useMockedData";
+import { useMockedData } from "../datas/data";
 /** styles */
 import "../styles/dashboard.css";
 import styled from "styled-components";
@@ -64,13 +65,16 @@ const MainChart = styled.div`
   grid-column: 1/4;
 `;
 
+/**
+ * Dashboard page containing charts and calories cards
+ */
 export function Dashboard() {
   let { id } = useParams();
   let userId = parseInt(id);
 
   const { error, data } = useSportSeeApi(`first-name`, userId);
-  
-  if (error || data === undefined) {
+
+  if (error || (data === undefined && !useMockedData)) {
     return <Error/>;
   }
   

@@ -80,6 +80,10 @@ margin: 0;
 
 `;
 
+/**
+ * Daily activity chart
+ * @param {number} userId 
+ */
 export function DailyActivities({ userId }) {
   
   const dailyActivities = FacadePattern( "daily-activity", userId);

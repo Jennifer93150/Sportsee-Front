@@ -52,6 +52,10 @@ const NameMeasure = styled.div`
   font-size: 12px
 `;
 
+/**
+ * Calorie charts
+ * @param {number} userId 
+ */
 export function CaloriesCard({ userId }) {
   
   const calorieInfos = FacadePattern('user', userId);

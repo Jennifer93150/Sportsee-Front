@@ -31,6 +31,10 @@ const ACTIVITIES_ORDER = [
   "Cardio",
 ];
 
+/**
+ * Performances chart
+ * @param {number} userId 
+ */
 export function Performance({ userId }) {
   
   const performances = FacadePattern("performance", userId);
